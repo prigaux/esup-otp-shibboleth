@@ -17,13 +17,13 @@ import javax.annotation.Nonnull;
 
 import org.slf4j.Logger;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.ClientHttpResponse;
 
 import net.shibboleth.shared.primitive.LoggerFactory;
-import org.springframework.util.MultiValueMap;
 import org.springframework.util.StreamUtils;
 
 /**
@@ -120,8 +120,8 @@ public class EsupOtpLoggingInterceptor implements ClientHttpRequestInterceptor {
      * @param headers request or response headers.
      * @return sanitized headers as String
      */
-    private String sanitizeHeaders(MultiValueMap<String, String> headers) {
-        return headers.entrySet().stream()
+    private String sanitizeHeaders(HttpHeaders headers) {
+        return headers.headerSet().stream()
                 .map(entry ->
                     entry.getKey() + ":" + getValues(entry.getValue(), HEADERS_TO_SANITIZE.contains(entry.getKey()))
                 )
