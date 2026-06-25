@@ -113,19 +113,6 @@ Par exemple :
 - Main Log : ```$idp_install_path/logs/idp-process.log```
 - Warn and error log : ```$idp_install_path/logs/idp-warn.log```
 
-## Test
-
-- Aide
-```
-[username@server ~]$ $idp_install_path/bin/esupotpauth.sh --help
-```
-
-- Lister tous les utilisateurs
-
-```
-[username@server ~]$ $idp_install_path/bin/esupotpauth.sh --home /usr/share/shibboleth-idp --verbose --command all
-```
-
 ### Development
 
 Java 17, Spring framework 6, Lombok
